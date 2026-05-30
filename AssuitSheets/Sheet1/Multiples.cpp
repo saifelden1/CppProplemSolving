@@ -1,0 +1,15 @@
+#include <iostream>
+
+int main()
+{
+    int a=0 ,b=0;
+
+    std::cin >> a >> b;
+   if ( a % b == 0 || b % a == 0)
+        std::cout << "Multiples" << std::endl;
+    else
+        std::cout << "No Multiples" << std::endl;
+    
+    
+    return 0;
+}
