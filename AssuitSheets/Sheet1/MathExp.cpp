@@ -1,13 +1,17 @@
 #include <iostream>
+#include <algorithm>
 
 int main()
 {
-    int int11, int12, int21, int22;
+    long long int11, int12, int21, int22;
     std::cin >> int11 >> int12 >> int21 >> int22;
 
-    if (int21 < int12)
+    long long start = std::max(int11, int21);
+    long long end = std::min(int12, int22);
+
+    if (start <= end)
     {
-        std::cout << int21 << " " << int12 << std::endl;
+        std::cout << start << " " << end << std::endl;
     }
     else
     {
