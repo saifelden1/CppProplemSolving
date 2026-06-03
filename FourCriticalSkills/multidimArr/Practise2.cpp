@@ -4,10 +4,9 @@
 int main()
 {
     int arr[100][100] = {0};
-    int row, col;
-    int r = 0, c = 0;
+    int comp[100][2] = {0};
+    int row, col, num;
     std::cin >> row >> col;
-    int sum = 0;
     for (int i = 0; i < row; i++)
     {
         for (int j = 0; j < col; j++)
@@ -15,37 +14,37 @@ int main()
             std::cin >> arr[i][j];
         }
     }
-    sum = arr[0][0];
-    while (r < row && c < col)
+
+    std::cin >> num;
+    for (int i = 0; i < num; i++)
     {
-        int right_val = (c + 1 < col) ? arr[r][c + 1] : -1;
-        int down_val = (r + 1 < row) ? arr[r + 1][c] : -1;
-        int diagonal_val = (r + 1 < row && c + 1 < col) ? arr[r + 1][c + 1] : -1;
 
-        if (right_val == -1 && down_val == -1 && diagonal_val == -1)
-        {
-            break; // Exit the loop
-        }
+        std::cin >> comp[i][0] >> comp[i][1];
+    }
 
-        // Find the largest value and update the coordinates (r, c)
-        if (right_val >= down_val && right_val >= diagonal_val)
+    for (int i = 0; i < num; i++)
+    {
+        int row1 = comp[i][0] - 1;
+        int row2 = comp[i][1] - 1;
+        bool is_smaller = true;
+
+        for (int j = 0; j < col; j++)
         {
-            sum += right_val;
-            c++; // Move Right
+            if (arr[row1][j] > arr[row2][j])
+            {
+                is_smaller = false;
+                break;
+            }
         }
-        else if (down_val >= right_val && down_val >= diagonal_val)
+        if (is_smaller)
         {
-            sum  += down_val;
-            r++; // Move Down
+            std::cout << "Yes" << std::endl;
         }
         else
         {
-            sum += diagonal_val;
-            r++; // Move Diagonal
-            c++;
+            std::cout << "No" << std::endl;
         }
     }
-    std::cout << sum << std::endl;
 
     return 0;
 }
