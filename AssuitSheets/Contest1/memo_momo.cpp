@@ -3,7 +3,8 @@
 
 int main()
 {
-    double x,y,k;
+    //the module doesn't work with flaot or double
+    long long x,y,k;
     std::cin >> x >> y >> k;
 
     if ((x%k == 0) && (y%k == 0))
